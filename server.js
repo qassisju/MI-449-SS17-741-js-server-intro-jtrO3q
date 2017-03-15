@@ -7,24 +7,34 @@ var server = http.createServer(function (request, response) {
   var jokeThree = 'Knock knock. Who’s there?The door.'
   var randNum = Math.random()
   if (request.url === '/') {
-    response.end('Welcome to my server')
+    response.end(
+      '<h1>Welcome to my server</h1>'
+    )
   } else if (request.url === '/random-joke') {
     if (randNum > 0.0 && randNum < 0.4) {
-      response.end(jokeOne)
+      response.end(
+      '<h1>Hello, welcome to my server</h1>' + '<a href="/">Homepage</a>' + jokeOne
+    )
     }
     if (randNum > 0.4 && randNum < 0.7) {
-      response.end(jokeTwo)
+      response.end(
+        '<h1>Hello, welcome to my server</h1>' + '<a href="/">Homepage</a>' + jokeTwo
+      )
     }
     if (randNum > 0.7 && randNum < 1) {
-      response.end(jokeThree)
+      response.end(
+        '<h1>Hello, welcome to my server</h1>' + '<a href="/">Homepage</a>' + jokeThree
+      )
     }
   } else if (request.url === '/cuteness') {
     response.end(
       '<h1>Cute animal</h1>' +
-      '<img src="http://static.boredpanda.com/blog/wp-content/uuuploads/cute-baby-animals-2/cute-baby-animals-2-2.jpg">'
+      '<a href="/">Homepage</a>' + '<img src="http://static.boredpanda.com/blog/wp-content/uuuploads/cute-baby-animals-2/cute-baby-animals-2-2.jpg">'
         )
   } else {
-    response.end('404 Error, Page not found at URL: ' + request.url)
+    response.end(
+      '<a href = "/">Homepage</a>' + '404 Error, Page not found at URL: ' + request.url
+    )
   }
 })
 var port = process.env.PORT || 8080
